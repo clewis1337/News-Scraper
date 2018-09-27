@@ -1,4 +1,19 @@
 // Grab the articles as a json
+$.getJSON("/articles", function(data) {
+  // For each one
+  console.log("clicked!")
+  for (var i = 0; i < data.length; i++) {// Display the apropos information on the page
+    $("#articles").append(
+    `<div data-id="${data[i]._id}">
+       <h1>${data[i].title}</h1>
+       <img src="${data[i].image}"/> <button class="saveArticle" unique="${data[i].link}">Save Article</button>
+       <p>${data[i].summary}</p>
+       <a href="${data[i].link}">${data[i].link}</p>
+     </div>`);
+    // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+  }
+})
+
  $("#submitScrape").click(function(){ //On page load, scrape all articles from our DB
   $.getJSON("/scrape", function(data) {
     // For each one
@@ -13,7 +28,7 @@
        </div>`);
       // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
     }
-  });
+  })
 });
 
 $("#saveArticle").click( function() {

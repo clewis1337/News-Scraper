@@ -1,6 +1,6 @@
 // Grab the articles as a json
  $("#submitScrape").click(function(){ //On page load, scrape all articles from our DB
-  $.getJSON("/articles", function(data) {
+  $.getJSON("/scrape", function(data) {
     // For each one
     console.log("clicked!")
     for (var i = 0; i < data.length; i++) {// Display the apropos information on the page
